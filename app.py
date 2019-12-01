@@ -166,6 +166,16 @@ class App(object):
         
         self.__canvas.delete("angle")
         
+        # Cria uma borda.
+        self.__canvas.create_rectangle(
+            self.margin[0] - 40,
+            self.margin[1] // 2 - 20,
+            self.margin[0] + 40,
+            self.margin[1] // 2 + 20,
+            fill = "black", tag = "angle" , outline= self.text_color
+            )
+
+        # Cria um texto para inserir o ângulo.
         self.__canvas.create_text(
             self.margin[0],self.margin[1]//2,
             text = str(angle)+"º",
@@ -229,14 +239,14 @@ class App(object):
         if mouse_y >= b_pos[1]: 
             mouse_y = b_pos[1] + self.line_width
 
-        if mouse_y <= self.margin[0]:
-            mouse_y = self.line_width + 45
+        if mouse_y <= self.margin[1]:
+            mouse_y = self.line_width + self.margin[1]
 
         if mouse_x >= self.w_width - self.margin[0]:
             mouse_x = self.w_width - self.margin[0]
 
         if mouse_x <= self.margin[0]:
-            mouse_x = self.line_width + 45
+            mouse_x = self.line_width + self.margin[0]
 
 
         # Desenha a hipotenusa.
